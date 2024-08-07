@@ -31,16 +31,8 @@ const peopleSlice = createSlice({
     initialState,
     reducers: {
         addPersonToList(state, action: PayloadAction<Person>) {
-            console.log("___addPersonToList: ", action.payload);
-            state.people = [
-                ...state.people,
-                action.payload
-            ];
-            state.people.push(action.payload); // Usare push per mantenere l'immutabilità con Redux Toolkit
 
-            console.log("Updated state.people:", state.people);
-
-            //  localStorage.setItem('people', JSON.stringify(state.people));
+            state.people.push(action.payload); // Usare push per mantenere l'immutabilità con Redux Toolkit         
 
         },
     }

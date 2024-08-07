@@ -1,21 +1,28 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { HStack, Text } from "@chakra-ui/react";
 
-export default function ListPeople() {
+const ListPeople: React.FC = () => {
   const peopleList = useSelector((state: RootState) => state.people.people);
+  const randomPersonApi = useSelector((state: RootState) => state.person);
+
   console.log("Current people list:", peopleList);
+  console.log(randomPersonApi);
 
   return (
     <>
-      <h3>Lung {peopleList.length}</h3>
-      <ul>
+      <div>
         {peopleList.map((p, i) => (
-          <li key={i}>
-            <img src={p.img} alt="" /> {p.name} {p.surname}
-          </li>
+          <HStack key={i}>
+            <img src={p.img} alt="" />
+            <Text>
+              {p.name} {p.surname}
+            </Text>
+          </HStack>
         ))}
-      </ul>
+      </div>
     </>
   );
-}
+};
+export default ListPeople;

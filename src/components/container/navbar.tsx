@@ -1,5 +1,12 @@
 import React from "react";
-import { Link, HStack, Card, CardBody, StackDivider } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from "react-router-dom";
+import {
+  Link as ChakraLink,
+  HStack,
+  Card,
+  CardBody,
+  StackDivider,
+} from "@chakra-ui/react";
 
 export default function Navbar() {
   return (
@@ -10,12 +17,22 @@ export default function Navbar() {
           spacing={5}
           divider={<StackDivider borderColor="gray.200" />}
         >
-          <Link href={`/`} fontSize="xl" fontWeight={"bold"}>
+          <ChakraLink
+            as={ReactRouterLink}
+            to={`/`}
+            fontSize="xl"
+            fontWeight={"bold"}
+          >
             Add
-          </Link>
-          <Link href={`/list`} fontSize="xl" fontWeight={"bold"}>
+          </ChakraLink>
+          <ChakraLink
+            as={ReactRouterLink}
+            to={`/list`}
+            fontSize="xl"
+            fontWeight={"bold"}
+          >
             List
-          </Link>
+          </ChakraLink>
         </HStack>
       </CardBody>
     </Card>

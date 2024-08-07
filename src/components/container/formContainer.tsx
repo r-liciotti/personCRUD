@@ -21,7 +21,11 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import { addPersonToList } from "../../store/peopleSplice";
-import { Person, getRandomPersonAPI } from "../../store/personSlice";
+import {
+  Person,
+  getRandomPersonAPI,
+  clearPerson,
+} from "../../store/personSlice";
 
 //import { PersonAppDispatch, PersonState } from "../../store/store";
 import { AppDispatch, RootState } from "../../store/store";
@@ -55,12 +59,12 @@ export default function FormContainer() {
 
   const handleSumbit = (e: React.FormEvent) => {
     e.preventDefault();
-    // pers.genere = radioGenere;
     setPers((prevPerson) => ({
       ...prevPerson,
       genere: radioGenere,
     }));
     dispatch(addPersonToList(pers));
+
     setPers({
       genere: "male",
       name: "",
@@ -73,12 +77,11 @@ export default function FormContainer() {
       img: "",
     });
     setRadioGenere("");
+    //  dispatch(clearPerson());
   };
 
   useEffect(() => {
     // console.log("useEffect");
-
-    // console.log(randomPersonApi);
 
     if (randomPersonApi && randomPersonApi.name) {
       // Verifica se randomPersonApi ha dati validi

@@ -1,30 +1,21 @@
 import React from "react";
 import FormContainer from "./components/container/formContainer";
 import ListPeople from "./components/container/listPeople";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./components/assets/style/App.css";
-import { Provider } from "react-redux";
-import { peopleStore } from "./store/store";
+
 import Navbar from "./components/container/navbar";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <FormContainer />,
-  },
-  {
-    path: "/list",
-    element: <ListPeople />,
-  },
-]);
-
-function App() {
+const App: React.FC = () => {
   return (
-    <Provider store={peopleStore}>
+    <BrowserRouter>
       <Navbar />
-      <RouterProvider router={router} />
-    </Provider>
+      <Routes>
+        <Route path="/" element={<FormContainer />} />
+        <Route path="/list" element={<ListPeople />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

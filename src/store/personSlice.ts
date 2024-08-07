@@ -33,7 +33,14 @@ const personSlice = createSlice({
     reducers: {
         setPerson(state, action: PayloadAction<Person>) {
             state = action.payload;
-        }
+
+        },
+        clearPerson(state) {
+            console.log("clearPErson ");
+            // state = initialState
+
+            return initialState;
+        },
     },
     extraReducers: (builder) => {
 
@@ -64,5 +71,5 @@ export const getRandomPersonAPI = createAsyncThunk<Person>("person/getRandomPers
     return _person;
 });
 
-export const { setPerson } = personSlice.actions;
+export const { setPerson, clearPerson } = personSlice.actions;
 export default personSlice.reducer;
