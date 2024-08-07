@@ -4,7 +4,7 @@ import { RootState } from "../../store/store";
 
 export default function ListPeople() {
   const peopleList = useSelector((state: RootState) => state.people.people);
-  console.log("People List:", peopleList); // Aggiungi questo console.log per verificare il contenuto dello stato
+  console.log("Current people list:", peopleList);
 
   return (
     <>

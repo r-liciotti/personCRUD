@@ -39,8 +39,7 @@ export default function FormContainer() {
     img: "",
   } as Person);
 
-  const dispatch = useDispatch();
-  const dispatchPerson = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
 
   const [radioGenere, setRadioGenere] = useState("");
   const randomPersonApi = useSelector((state: RootState) => state.person);
@@ -61,8 +60,6 @@ export default function FormContainer() {
       ...prevPerson,
       genere: radioGenere,
     }));
-    console.log("Dispatching addPersonToList with:", pers);
-
     dispatch(addPersonToList(pers));
     setPers({
       genere: "male",
@@ -101,7 +98,7 @@ export default function FormContainer() {
   }, [randomPersonApi]);
 
   const handleClick = () => {
-    dispatchPerson(getRandomPersonAPI());
+    dispatch(getRandomPersonAPI());
   };
 
   return (
